@@ -71,6 +71,8 @@
 
 ## Посоляване
 
+Недейте соля много.
+
 ## Източници:
 - https://en.m.wikipedia.org/wiki/Pepper_(cryptography)
 - https://www.php.net/manual/en/function.password-hash.php 
@@ -81,6 +83,6 @@
 - https://www.csfieldguide.org.nz/en/chapters/coding-encryption/substitution-ciphers/
 - http://simia.net/letters/
 
-"Тп-освъи фргтпр лъгк, шхлшолшхп яйбь джс нскм."
-~Щжсгс
+"ТС-ЗСДУИ ЦЙГФИР НУГМ, СХНСОНСХС ЦЙГФ ДИК НУГМ."
+~ЩИКГУ
 
