@@ -7,6 +7,8 @@
 
         <link rel="stylesheet" href="css/style.css" />
         <link rel="stylesheet" href="css/ceaser_shift.css" />
+        <link rel="stylesheet" href="css/frequency_analyzer.css" />
+        <link rel="stylesheet" href="css/ceaser_key.css" />
     </head>
 
     <body>
@@ -95,6 +97,28 @@
         </div>
 
         <script src="javascript/ceaser_shift.js"></script>
+
+        <h2>Symbol Frequency Analyzer</h2>
+        <p>Enter text below to analyze the frequency of each symbol:</p>
+
+        <textarea id="inputText" placeholder="Enter text here..."></textarea>
+        <button onclick="analyzeText()">Analyze Text</button>
+
+        <div id="results"></div>
+
+        <script src="javascript/frequency_analyzer.js"></script>
+
+        <textarea id="messageInput" placeholder="Enter message"></textarea>
+        <input type="text" id="keyInput" placeholder="Enter key">
+        <select id="alphabetSelect">
+            <option value="latin">Latin</option>
+            <option value="cyrillic">Cyrillic</option>
+        </select>
+        <button onclick="encrypt()">Encrypt</button>
+        <textarea id="result" readonly></textarea>
+
+        <script src="javascript/ceaser_key.js"></script>
+
     </body>
 
 </html>
