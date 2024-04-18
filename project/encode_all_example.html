@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Encoder</title>
+</head>
+<body>
+    <h1>Криптиране, хеширане и посоляване</h1>
+    <h4>Тема 148</h3>
+
+    <h2>Въведение</h2>
+    <p>
+        Всеки човек, използващ интернет, се е сблъсквал с процесите по криптиране и хеширане на информация, но може би
+        единствено изучените програмисти знаят какви процеси стоят зад тези сложни термини.
+    </p>
+    <p>
+        Криптирането е основен процес при сигурния трансфер на данни, използван в комуникацията между повечето модерни
+        устройства. Предаваната информация се криптира, така че единствено желаният получател да може да разтълкува
+        съдържанието й. Така зловредни опити за разчитане на информацията при процеса на трансфер биват напрактика
+        безполезни. Пример за това би било при плащане с банкова карта, външно лице да се опита да извлече банковата ни
+        информация, проследявайки криптираните данни от транзакцията.
+    </p>
+    <p>
+        При хеширането основният проблем, който се
+        разрешава, е проверката за интегритет (цялост) на дадени данни. Стойността получена при хеширането на дадени
+        данни е уникална, като всяка малка промяна в данните води до напълно различна хеш стойност. Освен това
+        хеширането не е обратим процес за разлика от криптирането т.е. при наличие на хеш стойността не можем да
+        възстановим първоначалния вид на данните. Така например безопасно могат да се съхраняват пароли чрез тяхната
+        уникална хеш стойност без притеснения, че хакер получил достъп до базата, ще получи достъп и до акаунтите на
+        потребителите </p>
+
+    <p>Но какво ще стане, ако хакерът в горния пример забележи, че в базата с хешираните пароли има еднакви стойности?
+        Това би подсказало на хакера, че съответните потребители използват често срещани пароли. Всеки уважаващ себе си
+        хакер би успял да разбие тези лесни пароли за отрицателно време. За да се предотврати този проблем, повечето
+        модерни апликации използват техниката посоляване. Посоляването е процесът по прибавяне на допълнителна
+        последователност от символи към потребителската парола преди процеса на хеширане. Така двама потребители с
+        еднаква парола, ще имат различни хеш стойности в базата данни, което значително усложнява работата на
+        злонамерените хакери.</p>
+
+    <p>Нека разгледаме по-подробно гореописаните понятия.</p>
+
+    <h2>Криптиране</h2>
+
+    <p></p>
+
+    <!-- Button to encode the document -->
+    <button onclick="encodeDocument()">Encode Document</button>
+
+    <script>
+        function encodeDocument() {
+            // Get the text content of the whole document
+            var documentText = document.documentElement.innerHTML;
+            
+            // Define a function to shift a single letter
+            function shiftLetter(letter) {
+                // Check if the character is a letter
+                if (/[a-zA-Z]/.test(letter)) {
+                    // Get the character code
+                    var code = letter.charCodeAt(0);
+                    // Check if the character is uppercase or lowercase
+                    var offset = (letter === letter.toUpperCase()) ? 65 : 97;
+                    // Shift the character code by 3 positions
+                    code = (code - offset + 3) % 26 + offset;
+                    // Convert the character code back to a letter
+                    return String.fromCharCode(code);
+                }
+                // Return the character unchanged if it's not a letter
+                return letter;
+            }
+            
+            // Apply the shiftLetter function to each character in the document text
+            var encodedText = documentText.split('').map(shiftLetter).join('');
+            
+            // Log the encoded text to the console (for demonstration purposes)
+            document.open();
+            document.write(encodedText);
+            document.close();
+        }
+    </script>
+</body>
+</html>

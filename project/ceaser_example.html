@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Responsive Caesar Cipher</title>
-  <style>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Caesar Cipher</title>
+    <style>
     body {
       font-family: Arial, sans-serif;
     }
@@ -33,15 +33,7 @@
       margin: 5px;
       font-size: 20px;
     }
-    .end {
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 5px;
-      font-size: 20px;
-    }
+
     input[type="range"] {
       width: 80%;
       margin-bottom: 20px;
@@ -59,26 +51,27 @@
       font-size: 18px;
     }
   </style>
-</head>
-<body>
+  </head>
+  <body>
 
-<div class="container">
-  <input type="range" min="-25" max="25" value="0" id="shiftRange" oninput="updateShift(this.value)">
-  <div>Shift Value: <span id="shiftValue">0</span></div>
-  <input type="text" id="textInput" placeholder="Enter text..." oninput="encodeText(document.getElementById('shiftRange').value)">
-  <div class="letters-container">
-    <div class="row" id="originalLettersContainer">
-      <!-- JavaScript will populate this with original letters -->
+    <div class="container">
+      <input type="range" min="-25" max="25" value="0" id="shiftRange"
+        oninput="updateShift(this.value)">
+      <div>Shift Value: <span id="shiftValue">0</span></div>
+      <input type="text" id="textInput" placeholder="Enter text..."
+        oninput="encodeText(document.getElementById('shiftRange').value)">
+      <div class="letters-container">
+        <div class="row" id="originalLettersContainer">
+          <!-- JavaScript will populate this with original letters -->
+        </div>
+        <div class="row" id="encodedLettersContainer">
+          <!-- JavaScript will populate this with encoded letters -->
+        </div>
+      </div>
+      <div class="encoded-text" id="encodedText"></div>
     </div>
-    <div class="row" id="encodedLettersContainer">
-      <!-- JavaScript will populate this with encoded letters -->
-    </div>
-  </div>
-  <div class="end">Z</div>
-  <div class="encoded-text" id="encodedText"></div>
-</div>
 
-<script>
+    <script>
   function updateShift(shift) {
     const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     const originalLettersContainer = document.getElementById('originalLettersContainer');
@@ -133,5 +126,5 @@
   updateShift(0);
 </script>
 
-</body>
+  </body>
 </html>

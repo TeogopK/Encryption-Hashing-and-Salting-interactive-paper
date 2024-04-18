@@ -71,9 +71,16 @@
         <p></p>
 
         <div class="container">
+            <label for="alphabetSelect">Азбука на съобщението:</label>
+            <select id="alphabetSelect"
+                onchange="updateShift(document.getElementById('shiftRange').value)">
+                <option value="cyrillic">Кирилица</option>
+                <option value="latinic">Латиница</option>
+            </select>
+            <div>Стойност на преместването: <span id="shiftValue">0</span></div>
             <input type="range" min="-29" max="29" value="0" id="shiftRange"
                 oninput="updateShift(this.value)">
-            <div>Стойност на Преместването: <span id="shiftValue">0</span></div>
+            <label for="textInput">Съобщение за кодиране:</label>
             <input type="text" id="textInput" placeholder="Въведете текст..."
                 oninput="encodeText(document.getElementById('shiftRange').value)">
             <div class="letters-container">
