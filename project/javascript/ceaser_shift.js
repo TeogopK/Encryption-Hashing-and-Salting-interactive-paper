@@ -1,6 +1,7 @@
 const LATIN_ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 const CYRILLIC_ALPHABET = 'АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЬЮЯ'
 
+// Updates the visual cipher
 function updateShift(shift) {
   const alphabetSelect = document.getElementById('alphabetSelect');
   const selectedAlphabet = alphabetSelect.value;
@@ -11,7 +12,6 @@ function updateShift(shift) {
   } else if (selectedAlphabet === 'cyrillic') {
     letters = CYRILLIC_ALPHABET;
   } else {
-    // Default to Latin alphabet if invalid option
     letters = LATIN_ALPHABET;
   }
 
@@ -40,10 +40,10 @@ function updateShift(shift) {
     encodedLettersContainer.appendChild(encodedLetterDiv);
   }
 
-  // Encode the text in the text input
   encodeText(shift);
 }
 
+// Encodes the text
 function encodeText(shift) {
   const textInput = document.getElementById('textInput');
   const encodedText = [];
@@ -57,7 +57,6 @@ function encodeText(shift) {
   } else if (selectedAlphabet === 'cyrillic') {
     letters = CYRILLIC_ALPHABET;
   } else {
-    // Default to Latin alphabet if invalid option
     letters = LATIN_ALPHABET;
   }
 
@@ -79,15 +78,11 @@ function setDefaultValues() {
   const shiftRange = document.getElementById('shiftRange');
   const textInput = document.getElementById('textInput');
 
-  // Set default shift value
   shiftRange.value = 3;
-
-  // Set default text input value
   textInput.value = '';
 
-  // Update shift and encoded text
   updateShift(shiftRange.value);
 }
 
-// Add an event listener to call setDefaultValues when the page is loaded
+// Default page loader
 window.addEventListener('load', setDefaultValues);
