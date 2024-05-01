@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Encryption</title>
+</head>
+<body>
+
+<textarea id="inputText" rows="4" cols="50" placeholder="Enter text here" oninput="updateSteps()"></textarea><br>
+<input type="text" id="encryptionKey" placeholder="Enter encryption key">
+<button onclick="encrypt()">Encrypt</button><br><br>
+
+<p><strong>Encryption Process:</strong></p>
+<div id="encryptionSteps">
+    <div><strong>1. Text:</strong> <span id="step1"></span></div>
+    <div><strong>2. ASCII:</strong> <span id="step2"></span></div>
+    <div><strong>3. Binary:</strong> <span id="step3"></span></div>
+    <div><strong>4. Encrypted Binary:</strong> <span id="step4"></span></div>
+    <div><strong>5. Encrypted ASCII:</strong> <span id="step5"></span></div>
+    <div><strong>6. Encrypted Text:</strong> <span id="step6"></span></div>
+</div>
+
+<script>
+function updateSteps() {
+    var text = document.getElementById("inputText").value;
+    var asciiArray = text.split('').map(function(char) {
+        return char.charCodeAt(0);
+    });
+    var binaryArray = asciiArray.map(function(decimal) {
+        return decimal.toString(2).padStart(8, '0');
+    });
+    var binaryString = binaryArray.join('');
+    document.getElementById("step1").innerText = text;
+    document.getElementById("step2").innerText = asciiArray.join(', ');
+    document.getElementById("step3").innerText = binaryString;
+}
+
+function encrypt() {
+    var text = document.getElementById("inputText").value;
+    var binaryString = document.getElementById("step3").innerText;
+    var key = document.getElementById("encryptionKey").value;
+    
+    var encryptedBinaryString = '';
+    for (var i = 0; i < binaryString.length; i += key.length) {
+        var block = binaryString.substr(i, key.length);
+        var encryptedBlock = '';
+        for (var j = 0; j < key.length; j++) {
+            encryptedBlock += (parseInt(block[j]) | parseInt(key[j % key.length])).toString();
+        }
+        encryptedBinaryString += encryptedBlock;
+    }
+    document.getElementById("step4").innerText = encryptedBinaryString;
+    
+    var encryptedAsciiArray = [];
+    for (var k = 0; k < encryptedBinaryString.length; k += 8) {
+        encryptedAsciiArray.push(parseInt(encryptedBinaryString.substr(k, 8), 2));
+    }
+    var encryptedText = String.fromCharCode.apply(null, encryptedAsciiArray);
+    document.getElementById("step5").innerText = encryptedAsciiArray.join(', ');
+    document.getElementById("step6").innerText = encryptedText;
+}
+</script>
+
+</body>
+</html>
