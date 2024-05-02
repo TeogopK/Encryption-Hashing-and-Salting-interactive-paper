@@ -1,0 +1,22 @@
+body {
+    color: #3b3f41;
+    font-size: 1.1875em;
+    font-family: roboto, Arial, sans-serif;
+    font-style: normal;
+    font-weight: 300;
+}
+
+p {
+    margin: 1.27em auto;
+    font-size: 1em;
+    line-height: 1.5em;
+}
+
+h2 {
+    margin: 2.75% 0 1.25%;
+    font-size: 1.5em;
+    font-family: roboto, Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    color: #414141;
+}
