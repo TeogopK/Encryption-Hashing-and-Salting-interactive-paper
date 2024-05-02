@@ -6,6 +6,11 @@ body {
     font-weight: 300;
 }
 
+.content {
+    width: 55%;
+    margin: 0 auto;
+}
+
 p {
     margin: 1.27em auto;
     font-size: 1em;
