@@ -1,38 +1,21 @@
 <!DOCTYPE html>
 <html lang="bg">
 
-    <head>
-        <meta charset="utf-8" />
-        <title>Криптиране, хеширане и посоляване</title>
+<head>
+    <meta charset="utf-8" />
+    <title>Криптиране, хеширане и посоляване</title>
 
-        <link rel="stylesheet" href="css/styles.css" />
-        <link rel="stylesheet" href="css/ceaser_shift.css" />
-        <link rel="stylesheet" href="css/frequency_analyzer.css" />
-        <link rel="stylesheet" href="css/ceaser_key.css" />
-    </head>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/ceaser_shift.css" />
+    <link rel="stylesheet" href="css/frequency_analyzer.css" />
+    <link rel="stylesheet" href="css/ceaser_key.css" />
+</head>
 
-    <body>
+<body>
 
-        <div class="content">
+    <div class="content">
 
         <h1>Криптиране, хеширане и посоляване</h1>
-        <h4>Тема 148</h3>
-
-        <p><strong>Внимание!! Хешът на качения CSS не отговаря на очакваната
-                стойност! Премахваме всякакъв дизайн!</strong></p>
-
-        <h2>Неща за довършване</h2>
-        <ul>
-            <li>допълване на темата за криптиране</li>
-            <li>добавяне на тема за хеширане</li>
-            <li>посоляване и подлютяване.</li>
-            <li>спазване на добрите практики в CSS</li>
-            <li>спазване на добрите практики в JS</li>
-            <li>групиране на елементите в логически свързани контейнери</li>
-            <li>прилагане на responsive CSS стил</li>
-            <li>оптимизиране на JS кода</li>
-            <li>прилагане на по-хубав CSS - може би.</li>
-        </ul>
 
         <h2>Въведение</h2>
         <p>
@@ -121,14 +104,12 @@
         <h4>Цезаров шифър в действие</h4>
         <div class="ceaserShiftContainer">
             <label for="alphabetSelect">Азбука на съобщението:</label>
-            <select id="alphabetSelect"
-                onchange="updateShift(document.getElementById('shiftRange').value)">
+            <select id="alphabetSelect" onchange="updateShift(document.getElementById('shiftRange').value)">
                 <option value="cyrillic">Кирилица</option>
                 <option value="latinic">Латиница</option>
             </select>
             <div>Стойност на преместването: <span id="shiftValue">0</span></div>
-            <input type="range" min="-29" max="29" value="0" id="shiftRange"
-                oninput="updateShift(this.value)">
+            <input type="range" min="-29" max="29" value="0" id="shiftRange" oninput="updateShift(this.value)">
             <label for="textInput">Съобщение за кодиране:</label>
             <input type="text" id="textInput" placeholder="Въведете текст..."
                 oninput="encodeText(document.getElementById('shiftRange').value)">
@@ -185,12 +166,14 @@
         <p>Въведете текст по-долу, за да анализирате честотата на всеки
             символ:</p>
 
-        <textarea id="inputText" placeholder="Въведете текст тук..."></textarea>
-        <button onclick="analyzeText()">Анализирай текста</button>
+        <div class="frequencyAnalyzerContainer">
+            <textarea id="inputText" placeholder="Въведете текст тук..."></textarea>
+            <button onclick="analyzeText()">Анализирай текста</button>
 
-        <div id="results"></div>
+            <div id="results"></div>
 
-        <script src="javascript/frequency_analyzer.js"></script>
+            <script src="javascript/frequency_analyzer.js"></script>
+        </div>
 
         <h3>Криптиращи ключове</h3>
         <p>Друг примерен вариант е Шифърът на Виженер. Нека си представим ключа
@@ -228,17 +211,81 @@
         </p>
 
         <h4>Криптиране с ключ</h4>
-        <textarea id="messageInputKey"
-            placeholder="Въведи съобщение за криптиране..."></textarea>
-        <input type="text" id="keyInputKey" placeholder="Въведи ключа...">
-        <select id="alphabetSelectKey">
-            <option value="cyrillic">Кирилица</option>
-            <option value="latin">Латиница</option>
-        </select>
-        <button onclick="encryptKey()">Криптирай</button>
-        <textarea id="resultKey" readonly></textarea>
+        <div class="ceaserKeyContainer">
+            <textarea id="messageInputKey" placeholder="Въведи съобщение за криптиране..."></textarea>
+            <input type="text" id="keyInputKey" placeholder="Въведи ключа...">
+            <select id="alphabetSelectKey">
+                <option value="cyrillic">Кирилица</option>
+                <option value="latin">Латиница</option>
+            </select>
+            <button onclick="encryptKey()">Криптирай</button>
+            <textarea id="resultKey" readonly></textarea>
 
-        <script src="javascript/ceaser_key.js"></script>
+            <script src="javascript/ceaser_key.js"></script>
+        </div>
+        <h3>Битове</h3>
+
+        <p>Модерните ключове представляват поредица от нули и единици обикновено с дължина 128 или 256 символа. Известни
+            са още като 128-битови или 256-битови ключове. Възможните ключове с дължина 128 бита са 2 на степен 128 или
+            число с 38 нули. Това е така, защото на всеки бит избираме дали да е 0 или 1. Имаме 128 избора или
+            2*2*2...*2 = 2^128 възможни комбинации. Ако отгатвате по 1 милиард възможни ключа в секунда и сте започнали
+            при самото създаването на Вселената, няма все още да сте минали 1 процент от всички възможни комбинации.
+        </p>
+        <p>Цялата информация, която се предава в интернет пространството може да се представи като поредица от нули и
+            единици. За простота ще използваме ASCII таблицата. Тя показва как можем да представим текст чрез поредица
+            от числа, като заменим всеки символ с дадено число. Например малката латинска буква 'a' се представя чрез
+            числото 97, малкото 'b' с 98, малкото 'z' с 122, голямото 'А' със 65, 'B с 66, 'Z' с 90. Всъщност се
+            извършва вид кодиране - всеки символ се кодира със зададено в таблицата число. Имаме кодиране на
+            компютърната азбука, състояща се от 256 символа в числата от 0 до 255. Така думата 'ball' ще бъде преведена
+            до числата 98, 97, 108, 108. Какво общо имат тези числа с битовете?
+        </p>
+        <p>За да отговорим на този въпрос, трябва да разбираме как се преминава от десетична бройна система в двоична
+            бройна система. Записът на числото 108 в десетична бройна система показва, че имаме 1 стотица, 0 десетици и
+            8 единици. Можем да запишем числото 108 като 100 * 1 + 10 * 0 + 1 * 8. Ако заменим със степени на десетката,
+            получаваме (10^2) * 1 + (10^1) * 0 + (10^0) * 8. Така числото 101 в двоична бройна система означава, че
+            имаме (2^2) * 1 + (2^1) * 0 + (2^0) * 1 = 4 * 1 + 2 * 0 + 1 * 1 = 5. Така всеки бит показва дали ще включим
+            съответна степен на двойката при получаване на финалното число или не. Числото 101 показва - включваме 4, не
+            включваме 2, включваме 1, получаваме 5 след сумиране. Същото е и при числото 108 в десетична бройна система
+            - нулата показва, че нямаме десетици, но имаме 1 стотица и 8 единици. Числото 108 в двоична бройна система е
+            01101100 или (2^7) * 0 + (2^6) * 1 + (2^5) * 1 + (2^4) * 0 + (2^3) * 1 + (2^2) * 1 + (2^1) * 0 + (2^0) * 0 =
+            128 * 0 + 64 * 1 + 32 * 1 + 16 * 0 + 8 * 1 + 4 * 1 + 2* 0 + 1 * 0 = 108.
+        </p>
+        <p>Вече знаем, че думата 'ball' се кодира до последователните числа "98, 97, 108, 108", които в двоична бройна
+            система се изписват така: 01100010, 01100001, 01101100, 01101100. Първата нула е използвана за уеднаквяване
+            на дължината на символите - така знаем, че първите 8 бита са 1 символ, следващите 8 бита са втория символ и
+            т.н. Сега спокойно можем да представим низа "ball" като последователността от 32 бита
+            "01100010011000010110110001101100". Ще използваме 4-битовия ключ "1100" за кодиране на горната
+            последователност. Самият ключ не ни е достатъчен да кодираме съобщението - трябва ни функция на кодирането.
+        </p>
+        <p>Ще използваме операцията "побитово или", изписвана още "|". Функцията приема два бита и връща резултат 0, ако
+            и двата бита с 0 или 1 във всички останали случаи. Започваме да криптираме всички групички от 4 бита в
+            първоначалното съобщение като използваме ключа и дефинираната функция. От първата група 0110 | 1100
+            получаваме 1110 с финален резултат "11101110111011011110110011101100". След това можем да превърнем
+            криптираната поредица от битове в четири числа в десетична бройна система, които пък да превърнем в
+            последователност от символи чрез ASCII таблицата.
+        </p>
+        <p>Така криптирано съобщение с 4-битовия ни ключ изглежда по този начин: "îíìì"
+        </p>
+
+        <div class="bitKeyContainer">
+            <textarea id="bitKey_inputText" rows="4" cols="50" placeholder="Въведете текст тук"
+                oninput="updateSteps()"></textarea><br>
+            <input type="text" id="bitKey_encryptionKey" placeholder="Въведете ключ за криптиране"
+                oninput="updateSteps()">
+
+            <p><strong>Процес на Криптиране:</strong></p>
+            <p><strong>1. Оригинален Текст:</strong> <span id="originalText"></span></p>
+            <p><strong>2. Текст към ASCII:</strong> <span id="textToASCII"></span></p>
+            <p><strong>3. ASCII към Двоичен запис:</strong> <span id="ASCIIToBinary"></span></p>
+            <p><strong>4. Криптиран Двоичен запис:</strong> <span id="encryptedBinary"></span></p>
+            <p><strong>5. Криптиран ASCII:</strong> <span id="encryptedASCII"></span></p>
+            <p><strong>6. Криптиран Текст:</strong> <span id="encryptedText"></span></p>
+
+            <script src="javascript/bit_key.js"></script>
+        </div>
+
+
+        <h3>Осъществяване на комуникацията</h3>
         <h3>Модерни криптиращи алгоритми</h3>
         <p>развитие на темата...</p>
         <h2>Хеширане</h2>
@@ -250,27 +297,32 @@
         <h2>Източници:</h2>
         <ul>
             <li><a
-                    href="https://en.m.wikipedia.org/wiki/Pepper_(cryptography)">https://en.m.wikipedia.org/wiki/Pepper_(cryptography)</a></li>
+                    href="https://en.m.wikipedia.org/wiki/Pepper_(cryptography)">https://en.m.wikipedia.org/wiki/Pepper_(cryptography)</a>
+            </li>
             <li><a
-                    href="https://www.php.net/manual/en/function.password-hash.php">https://www.php.net/manual/en/function.password-hash.php</a></li>
+                    href="https://www.php.net/manual/en/function.password-hash.php">https://www.php.net/manual/en/function.password-hash.php</a>
+            </li>
             <li><a
-                    href="https://www.thesslstore.com/blog/difference-encryption-hashing-salting/">https://www.thesslstore.com/blog/difference-encryption-hashing-salting/</a></li>
+                    href="https://www.thesslstore.com/blog/difference-encryption-hashing-salting/">https://www.thesslstore.com/blog/difference-encryption-hashing-salting/</a>
+            </li>
             <li><a
-                    href="https://www.comparitech.com/blog/information-security/encryption-hashing-salting/">https://www.comparitech.com/blog/information-security/encryption-hashing-salting/</a></li>
+                    href="https://www.comparitech.com/blog/information-security/encryption-hashing-salting/">https://www.comparitech.com/blog/information-security/encryption-hashing-salting/</a>
+            </li>
             <li><a
-                    href="https://cybernews.com/security/hashing-vs-encryption/">https://cybernews.com/security/hashing-vs-encryption/</a></li>
+                    href="https://cybernews.com/security/hashing-vs-encryption/">https://cybernews.com/security/hashing-vs-encryption/</a>
+            </li>
+            <li><a href="https://en.wikipedia.org/wiki/Caesar_cipher">https://en.wikipedia.org/wiki/Caesar_cipher</a>
+            </li>
             <li><a
-                    href="https://en.wikipedia.org/wiki/Caesar_cipher">https://en.wikipedia.org/wiki/Caesar_cipher</a></li>
-            <li><a
-                    href="https://www.csfieldguide.org.nz/en/chapters/coding-encryption/substitution-ciphers/">https://www.csfieldguide.org.nz/en/chapters/coding-encryption/substitution-ciphers/</a></li>
-            <li><a
-                    href="http://simia.net/letters/">http://simia.net/letters/</a></li>
+                    href="https://www.csfieldguide.org.nz/en/chapters/coding-encryption/substitution-ciphers/">https://www.csfieldguide.org.nz/en/chapters/coding-encryption/substitution-ciphers/</a>
+            </li>
+            <li><a href="http://simia.net/letters/">http://simia.net/letters/</a></li>
         </ul>
 
         <blockquote>"ТС-ЗСДУИ ЦЙГФИР НУГМ, СХНСОНСХС ЦЙГФ ДИК НУГМ."
             ~ЩИКГУ
         </blockquote>
     </div>
-    </body>
+</body>
 
 </html>

@@ -1,80 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Encryption</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encryption</title>
 </head>
+
 <body>
 
-<textarea id="inputText" rows="4" cols="50" placeholder="Enter text here" oninput="updateSteps()"></textarea><br>
-<input type="text" id="encryptionKey" placeholder="Enter encryption key" oninput="updateSteps()">
+    <div class="bitKey">
+        <textarea id="bitKey_inputText" rows="4" cols="50" placeholder="Въведете текст тук"
+            oninput="updateSteps()"></textarea><br>
+        <input type="text" id="bitKey_encryptionKey" placeholder="Въведете ключ за криптиране" oninput="updateSteps()">
 
-<p><strong>Encryption Process:</strong></p>
-<div id="encryptionSteps">
-    <div><strong>1. Text:</strong> <span id="step1"></span></div>
-    <div><strong>2. ASCII:</strong> <span id="step2"></span></div>
-    <div><strong>3. Binary:</strong> <span id="step3"></span></div>
-    <div><strong>4. Encrypted Binary:</strong> <span id="step4"></span></div>
-    <div><strong>5. Encrypted ASCII:</strong> <span id="step5"></span></div>
-    <div><strong>6. Encrypted Text:</strong> <span id="step6"></span></div>
-</div>
+        <p><strong>Процес на Криптиране:</strong></p>
+        <p><strong>1. Оригинален Текст:</strong> <span id="originalText"></span></p>
+        <p><strong>2. Текст към ASCII:</strong> <span id="textToASCII"></span></p>
+        <p><strong>3. ASCII към Двоичен запис:</strong> <span id="ASCIIToBinary"></span></p>
+        <p><strong>4. Криптиран Двоичен запис:</strong> <span id="encryptedBinary"></span></p>
+        <p><strong>5. Криптиран ASCII:</strong> <span id="encryptedASCII"></span></p>
+        <p><strong>6. Криптиран Текст:</strong> <span id="encryptedText"></span></p>
 
-<script>
-function updateSteps() {
-    var text = document.getElementById("inputText").value;
-    var key = document.getElementById("encryptionKey").value;
+        <script src="javascript/bit_key.js"></script>
+    </div>
 
-    if (text === "") {
-        clearOutputs();
-        return;
-    }
-
-    var asciiArray = text.split('').map(function(char) {
-        return char.charCodeAt(0);
-    });
-    var binaryArray = asciiArray.map(function(decimal) {
-        return decimal.toString(2).padStart(8, '0');
-    });
-    var binaryString = binaryArray.join('');
-    document.getElementById("step1").innerText = text;
-    document.getElementById("step2").innerText = asciiArray.join(', ');
-    document.getElementById("step3").innerText = binaryString;
-
-    if (key === "") {
-        clearEncryptedOutputs();
-        return;
-    }
-
-    var encryptedBinaryString = '';
-    for (var i = 0; i < binaryString.length; i++) {
-        var encryptedBit = parseInt(binaryString[i]) | parseInt(key[i % key.length]);
-        encryptedBinaryString += encryptedBit.toString();
-    }
-
-    document.getElementById("step4").innerText = encryptedBinaryString;
-
-    var encryptedAsciiArray = [];
-    for (var k = 0; k < encryptedBinaryString.length; k += 8) {
-        encryptedAsciiArray.push(parseInt(encryptedBinaryString.substr(k, 8), 2));
-    }
-    var encryptedText = String.fromCharCode.apply(null, encryptedAsciiArray);
-    document.getElementById("step5").innerText = encryptedAsciiArray.join(', ');
-    document.getElementById("step6").innerText = encryptedText;
-}
-
-function clearOutputs() {
-    document.getElementById("step1").innerText = "";
-    document.getElementById("step2").innerText = "";
-    document.getElementById("step3").innerText = "";
-}
-
-function clearEncryptedOutputs() {
-    document.getElementById("step4").innerText = "";
-    document.getElementById("step5").innerText = "";
-    document.getElementById("step6").innerText = "";
-}
-</script>
 
 </body>
+
 </html>
