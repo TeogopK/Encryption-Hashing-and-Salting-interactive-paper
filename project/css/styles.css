@@ -6,9 +6,18 @@ body {
     font-weight: 300;
 }
 
+.container {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10%;
+}
+
 .content {
-    width: 55%;
-    margin: 0 auto;
+    width: 66.666%; 
+}
+
+.sidebar {
+    width: 33.333%;
 }
 
 p {
