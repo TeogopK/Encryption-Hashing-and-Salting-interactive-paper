@@ -1,36 +1,101 @@
 body {
-    color: #3b3f41;
-    font-size: 1.1875em;
-    font-family: roboto, Arial, sans-serif;
-    font-style: normal;
-    font-weight: 300;
+  color: #3b3f41;
+  font-size: 1.1875em;
+  font-family: roboto, Arial, sans-serif;
+  font-style: normal;
+  font-weight: 300;
 }
 
 .container {
-    display: flex;
-    justify-content: space-between;
-    padding: 0 10%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10%;
+  position: relative;
 }
 
 .content {
-    width: 66.666%; 
+  width: 66.666%;
 }
 
 .sidebar {
-    width: 33.333%;
+  width: 25%;
 }
 
 p {
-    margin: 1.27em auto;
-    font-size: 1em;
-    line-height: 1.5em;
+  margin: 1em auto;
+  font-size: 1em;
+  line-height: 1.5em;
+}
+
+h1 {
+  color: #29306c;
+  font-size: 1.8em;
 }
 
 h2 {
-    margin: 2.75% 0 1.25%;
-    font-size: 1.5em;
-    font-family: roboto, Arial, sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    color: #414141;
+  margin: 1.65em 0 0 0;
+  font-size: 1.5em;
+  color: #f07725;
+}
+
+h3 {
+  margin: 1.5em 0 0 0;
+  color: #29306c;
+  font-size: 1.1em;
+}
+
+h4 {
+  color: #f07725;
+}
+
+/* Side bar stuff */
+.sidebar img {
+  max-width: 80%;
+  height: auto;
+  margin: 0.5em 0 0 0;
+}
+
+.sidebar h3 {
+  color: #f07725;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.9em;
+}
+
+.sidebar li {
+  margin-bottom: 0.5em;
+}
+
+#author-name {
+  margin-top: 0.5em;
+  font-weight: bold;
+  font-size: 1.1em;
+  color: #29306c;
+}
+
+a:link,
+a:visited {
+  color: #29306c;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Small screens adjusting*/
+@media only screen and (max-width: 900px) {
+  .container {
+    flex-direction: column;
+    padding: 1em;
+  }
+
+  .content,
+  .sidebar {
+    width: 100%;
+  }
 }
