@@ -48,6 +48,26 @@ h4 {
   color: #f07725;
 }
 
+/* References */
+#references-ordered-list {
+  counter-reset: list-counter;
+  list-style: none;
+}
+
+#references-ordered-list li {
+  counter-increment: list-counter;
+  margin-bottom: 0.5em;
+}
+
+#references-ordered-list li::before {
+  content: "[" counter(list-counter) "]";
+  margin-right: 0.5em;
+}
+
+ul {
+  list-style-type: none;
+}
+
 /* Side bar stuff */
 .sidebar img {
   max-width: 80%;
