@@ -32,7 +32,7 @@ input[type="range"] {
   margin-bottom: 20px;
 }
 
-input[type="text"] {
+textarea, input[type="text"] {
   width: 80%;
   margin-bottom: 20px;
   padding: 10px;
@@ -45,3 +45,4 @@ input[type="text"] {
   margin-top: 20px;
   font-size: 18px;
 }
+
