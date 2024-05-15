@@ -79,6 +79,10 @@ textarea {
   display: block;
 }
 
+select {
+  margin-bottom: 1em;
+}
+
 /* References */
 sup {
   vertical-align: top;

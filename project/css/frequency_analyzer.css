@@ -11,6 +11,6 @@ td {
     padding: 6px;
 }
 
-.frequencyAnalyzerContainer th {
-    background-color: #f2f2f2;
+.frequencyAnalyzerContainer thead th {
+    color: #29306c;
 }
