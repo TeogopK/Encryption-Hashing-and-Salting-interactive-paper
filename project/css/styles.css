@@ -6,7 +6,7 @@ body {
   font-weight: 300;
 }
 
-.container {
+article {
   display: flex;
   justify-content: space-between;
   padding: 0 10%;
@@ -17,7 +17,7 @@ body {
   width: 66.666%;
 }
 
-.sidebar {
+aside {
   width: 25%;
 }
 
@@ -98,24 +98,24 @@ ul {
 }
 
 /* Side bar stuff */
-.sidebar img {
+aside img {
   max-width: 80%;
   height: auto;
   margin: 0.5em 0 0 0;
 }
 
-.sidebar h3 {
+aside h3 {
   color: #f07725;
 }
 
-.sidebar ul {
+aside ul {
   list-style-type: none;
   padding: 0;
   margin: 0;
   font-size: 0.9em;
 }
 
-.sidebar li {
+aside li {
   margin-bottom: 0.5em;
 }
 
@@ -138,13 +138,13 @@ a:hover {
 
 /* Small screens adjusting*/
 @media only screen and (max-width: 900px) {
-  .container {
+  article {
     flex-direction: column;
     padding: 1em;
   }
 
   .content,
-  .sidebar {
+  aside {
     width: 100%;
   }
 }
