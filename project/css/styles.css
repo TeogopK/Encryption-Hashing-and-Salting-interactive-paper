@@ -28,27 +28,56 @@ p {
 }
 
 h1 {
-  color: #29306c;
   font-size: 1.8em;
 }
 
 h2 {
   margin: 1.65em 0 0 0;
   font-size: 1.5em;
-  color: #f07725;
 }
 
 h3 {
   margin: 1.5em 0 0 0;
-  color: #29306c;
   font-size: 1.1em;
 }
 
+mark {
+  background: none;
+}
+
+.significant {
+  font-style: italic;
+  padding: 0.1em;
+}
+
+.blue,
+h1,
+h3 {
+  color: #29306c;
+}
+
+.orange,
+h2,
 h4 {
   color: #f07725;
 }
 
+.green {
+  color: #53a446;
+}
+
+.bold {
+  font-weight: 600;
+}
+
 /* References */
+sup {
+  vertical-align: top;
+  position: relative;
+  top: -0.5em;
+  font-size: 0.7em;
+}
+
 #references-ordered-list {
   counter-reset: list-counter;
   list-style: none;
