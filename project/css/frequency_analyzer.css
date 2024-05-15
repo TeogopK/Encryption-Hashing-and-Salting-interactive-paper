@@ -1,22 +1,16 @@
-textarea {
-    width: 100%;
-    height: 100px;
-    margin-bottom: 10px;
-}
-
-table {
+.frequencyAnalyzerContainer table {
     border-collapse: collapse;
     width: 100%;
     max-width: 600px;
 }
 
-th,
+.frequencyAnalyzerContainer th,
 td {
     border: 1px solid #dddddd;
     text-align: left;
     padding: 6px;
 }
 
-th {
+.frequencyAnalyzerContainer th {
     background-color: #f2f2f2;
 }

@@ -70,6 +70,15 @@ h4 {
   font-weight: 600;
 }
 
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+textarea {
+  display: block;
+}
+
 /* References */
 sup {
   vertical-align: top;

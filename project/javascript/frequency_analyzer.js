@@ -1,3 +1,7 @@
+// Attach event listener to input element
+document.getElementById('inputText').addEventListener('input', analyzeText);
+
+// Define the analyzeText function
 function analyzeText() {
     var text = document.getElementById('inputText').value;
     var symbolFrequency = {};
@@ -5,11 +9,13 @@ function analyzeText() {
     // Count frequency of each symbol
     for (var i = 0; i < text.length; i++) {
         var symbol = text[i];
+        if (symbol !== ' ') {
         if (symbolFrequency[symbol]) {
             symbolFrequency[symbol]++;
         } else {
             symbolFrequency[symbol] = 1;
         }
+    }
     }
 
     // Sort symbols by frequency
@@ -17,16 +23,18 @@ function analyzeText() {
         return symbolFrequency[b] - symbolFrequency[a];
     });
 
-    // Display results
-    var resultsDiv = document.getElementById('results');
-    resultsDiv.innerHTML = '<h3>Symbol Frequency Analysis:</h3>';
-    var table = '<table><tr><th>Symbol</th><th>Frequency</th></tr>';
+    // Get the table body element
+    var tableBody = document.querySelector('#frequencyTable tbody');
+
+    // Clear previous table content
+    tableBody.innerHTML = '';
 
     // Populate table with sorted symbols and their frequencies
     sortedSymbols.forEach(function (symbol) {
-        table += '<tr><td>' + symbol + '</td><td>' + symbolFrequency[symbol] + '</td></tr>';
+        var row = tableBody.insertRow();
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        cell1.textContent = symbol;
+        cell2.textContent = symbolFrequency[symbol];
     });
-
-    table += '</table>';
-    resultsDiv.innerHTML += table;
 }

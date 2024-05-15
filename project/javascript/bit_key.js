@@ -1,3 +1,6 @@
+document.getElementById('bitKey_inputText').addEventListener('input', updateSteps);
+document.getElementById('bitKey_encryptionKey').addEventListener('input', updateSteps);
+
 function updateSteps() {
     var text = document.getElementById("bitKey_inputText").value;
     var key = document.getElementById("bitKey_encryptionKey").value;

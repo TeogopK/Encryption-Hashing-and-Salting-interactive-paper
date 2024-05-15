@@ -113,17 +113,16 @@
                     <option value="cyrillic">Кирилица</option>
                     <option value="latin">Латиница</option>
                 </select>
-                <section>Стойност на преместването: <span id="shiftValue">0</span></section>
-                <input type="range" min="-29" max="29" value="0" id="shiftRange" oninput="updateShift(this.value)" />
                 <label for="textInput">Съобщение за кодиране:</label>
                 <input type="text" id="textInput" placeholder="Въведете текст..."
                     oninput="encodeText(document.getElementById('shiftRange').value)" />
+                    <section>Стойност на преместването: <span id="shiftValue">0</span></section>
+                    <input type="range" min="-29" max="29" value="0" id="shiftRange" oninput="updateShift(this.value)" />
+                    
                 <section class="letters-container">
                     <section class="row" id="originalLettersContainer">
-                        <!-- JavaScript ще попълни това с оригинални букви -->
                     </section>
                     <section class="row" id="encodedLettersContainer">
-                        <!-- JavaScript ще попълни това с кодирани букви -->
                     </section>
                 </section>
                 <section class="encoded-text" id="encodedText"></section>
@@ -180,15 +179,22 @@
             </p>
 
             <h4>Анализатор на честотата на символите</h4>
-            <p>
-                Въведете текст по-долу, за да анализирате честотата на всеки символ:
-            </p>
-
+            
             <section class="frequencyAnalyzerContainer">
+                <label for="inputText">Съобщение:</label>
                 <textarea id="inputText" placeholder="Въведете текст тук..."></textarea>
-                <button onclick="analyzeText()">Анализирай текста</button>
 
-                <section id="results"></section>
+                <section id="results">
+                    <table id="frequencyTable">
+                        <thead>
+                        <tr>
+                            <th>Символ</th>
+                            <th>Честота</th>
+                        </tr>
+                    </thead>
+                        <tbody></tbody>
+                    </table>
+                </section>
 
                 <script src="javascript/frequency_analyzer.js"></script>
             </section>
@@ -241,13 +247,18 @@
 
             <h4>Криптиране с ключ</h4>
             <section class="ceaserKeyContainer">
-                <textarea id="messageInputKey" placeholder="Въведи съобщение за криптиране..."></textarea>
-                <input type="text" id="keyInputKey" placeholder="Въведи ключа..." />
-                <select id="alphabetSelectKey">
-                    <option value="cyrillic">Кирилица</option>
-                    <option value="latin">Латиница</option>
-                </select>
-                <button onclick="encryptKey()">Криптирай</button>
+
+            <label for="alphabetSelectKey">Азбука на съобщението:</label>
+            <select id="alphabetSelectKey">
+                <option value="cyrillic">Кирилица</option>
+                <option value="latin">Латиница</option>
+            </select>
+            <label for="messageInputKey">Съобщение:</label>
+                <textarea id="messageInputKey" placeholder="Въведете съобщение за криптиране..."></textarea>
+                <label for="messageInputKey">Ключ с букви:</label>
+                <input type="text" id="keyInputKey" placeholder="Въведете ключа..." />
+                <label for="resultKey">Криптирано съобщение:</label>
+
                 <textarea id="resultKey" readonly></textarea>
 
                 <script src="javascript/ceaser_key.js"></script>
@@ -337,8 +348,11 @@
 
             <h4>Криптиране с битов ключ</h4>
             <section class="bitKeyContainer">
+                <label for="bitKey_inputText">Съобщение на английски:</label>
                 <textarea id="bitKey_inputText" rows="4" cols="50" placeholder="Въведете текст тук..."
-                    oninput="updateSteps()"></textarea><br />
+                    oninput="updateSteps()"></textarea>
+                <label for="bitKey_encryptionKey">Битов ключ (низ от единици и нули):</label>
+
                 <input type="text" id="bitKey_encryptionKey" placeholder="Въведете ключ за криптиране..."
                     oninput="updateSteps()" />
 
@@ -515,22 +529,22 @@
             <h4>Хеширане с таен низ</h4>
             <section class="integrityHashContainer">
             <section>
-            <label for="integrityMessage">Съобщение:</label><br>
+            <label for="integrityMessage">Съобщение:</label>
             <textarea id="integrityMessage" name="integrityMessage" placeholder="Въведете съобщение..."></textarea>
             </section>
-            <br>
+            
             <section>
-            <label for="integrityMessageHash">Хeш на съобщението:</label><br>
+            <label for="integrityMessageHash">Хeш на съобщението:</label>
             <input type="text" id="integrityMessageHash" readonly>
             </section>
-            <br>
+            
             <section>
-            <label for="integritySecret">Таен низ:</label><br>
+            <label for="integritySecret">Таен низ:</label>
             <input type="text" id="integritySecret" name="integritySecret"  placeholder="Въведете таен низ...">
             </section>
-            <br>
+            
             <section>
-                <label for="integrityConcatenatedHash">Изпратен хеш на съобщението с тайния низ:</label><br>
+                <label for="integrityConcatenatedHash">Изпратен хеш на съобщението с тайния низ:</label>
                 <input type="text" id="integrityConcatenatedHash" readonly>
             </section>
 
