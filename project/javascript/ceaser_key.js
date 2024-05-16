@@ -22,6 +22,14 @@ function encryptKey() {
       resultKey += charKey;
     }
   }
-  
+
   document.getElementById('resultKey').value = resultKey;
 }
+
+function clearTextboxes() {
+  document.getElementById('messageInputKey').value = '';
+  document.getElementById('keyInputKey').value = '';
+  document.getElementById('resultKey').value = '';
+}
+
+window.addEventListener('load', clearTextboxes);

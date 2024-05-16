@@ -148,13 +148,13 @@
                 възможните комбинации за ключ стават <em>30!</em>. Това е число с 32
                 нули, което би довело читателя до мисълта, че този шифър би бил
                 неразбиваем. Това ще е вярно, ако се използва наивен
-                <mark class="significant orange">brute force</mark> метод за
+                <em class="orange">brute force</em> метод за
                 решаването на проблема.<sup><a href="#references_6">[6]</a></sup>
             </p>
             <p>
                 При анализирането на даден криптиращ алгоритъм повече на брой ключове,
                 не винаги значи по-сигурен алгоритъм. Съществуват техники като
-                <mark class="significant orange">семантичния анализ</mark>, които
+                <mark class="orange">семантичния анализ</mark>, които
                 лесно разбиват семейството от шифри, произлизащи от Цезаровия.
                 Семантичният анализ проверява колко често се среща всяка буква в
                 шифрованото съобщение. Това носи изключително много информация за
@@ -183,7 +183,7 @@
             
             <section class="frequencyAnalyzerContainer">
                 <label for="inputText">Съобщение:</label>
-                <textarea id="inputText" placeholder="Въведете текст тук..."></textarea>
+                <input type="text" id="inputText" placeholder="Въведете текст тук..."></input>
 
                 <section id="results">
                     <table id="frequencyTable">
@@ -255,13 +255,12 @@
                 <option value="latin">Латиница</option>
             </select>
             <label for="messageInputKey">Съобщение:</label>
-                <textarea id="messageInputKey" placeholder="Въведете съобщение за криптиране..."></textarea>
+                <input type="text" class="inputBox" id="messageInputKey" placeholder="Въведете съобщение за криптиране..."  oninput="encryptKey()"></input>
                 <label for="messageInputKey">Ключ с букви:</label>
-                <input type="text" id="keyInputKey" placeholder="Въведете ключа..." />
-                <button onclick="encryptKey()">Криптирай</button>
+                <input type="text" class="keyBox" id="keyInputKey" placeholder="Въведете ключ, показващ отместването в азбуката..." oninput="encryptKey()"/>
                 <label for="resultKey">Криптирано съобщение:</label>
 
-                <textarea id="resultKey" readonly></textarea>
+                <input type="text" class="outputBox" id="resultKey" placeholder="Криптираното съобщение ще се покаже тук...", readonly></input>
 
                 <script src="javascript/ceaser_key.js"></script>
             </section>
@@ -351,8 +350,8 @@
             <h4>Криптиране с битов ключ</h4>
             <section class="bitKeyContainer">
                 <label for="bitKey_inputText">Съобщение на английски:</label>
-                <textarea id="bitKey_inputText" rows="4" cols="50" placeholder="Въведете текст тук..."
-                    oninput="updateSteps()"></textarea>
+                <input type="text" id="bitKey_inputText" rows="4" cols="50" placeholder="Въведете текст тук..."
+                    oninput="updateSteps()"></input>
                 <label for="bitKey_encryptionKey">Битов ключ (низ от единици и нули):</label>
 
                 <input type="text" id="bitKey_encryptionKey" placeholder="Въведете ключ за криптиране..."
@@ -387,7 +386,7 @@
             <h3>Симетрично криптиране</h3>
             <p>
                 Симетричното криптиране използва
-                <mark class="significant orange">един ключ за криптиране и декриптиране</mark>
+                <mark class="orange">един ключ за криптиране и декриптиране</mark>
                 на данните. Процесът по криптиране на данните със споделен ключ не
                 изисква големи количества изчислителна мощ. Освен това създаването на
                 такива ключове е сравнително бърза операция. Основният проблем свързан
@@ -405,7 +404,7 @@
             <p>
                 В решаване на този проблем през 70-те години на 20-ти век се
                 разработва асиметричното криптиране. То използва
-                <mark class="significant orange">два ключа – публичен и частен</mark>.
+                <mark class="orange">два ключа – публичен и частен</mark>.
                 Публичният ключ е известен на всички страни в комуникацията и се
                 използва за криптирането на данните. Изпратените криптирани данни
                 обаче не могат да се декодират с друго освен частния ключ. Частният
@@ -532,7 +531,7 @@
             <section class="integrityHashContainer">
             <section>
             <label for="integrityMessage">Съобщение:</label>
-            <textarea id="integrityMessage" name="integrityMessage" placeholder="Въведете съобщение..."></textarea>
+            <input type="text" id="integrityMessage" name="integrityMessage" placeholder="Въведете съобщение..."></input>
             </section>
             
             <section>
@@ -582,7 +581,7 @@
                 пароли.<sup><a href="#references_8">[8]</a></sup> Това позволява на
                 киберпрестъпниците бързо да проверяват възможните пароли с реалните
                 хеш стойности. Генерирането на такива
-                <mark class="significant orange">rainbow</mark> таблици, включващи
+                <em class="orange">rainbow</em> таблици, включващи
                 всяка възможна комбинация за парола от даден вид, става все по-скъпо с
                 нарастване на дължината на паролата. За това е ключово, когато
                 избираме парола за онлайн система, тя да е дълга и да не съдържа
@@ -606,7 +605,7 @@
                 За да се решат тези проблеми, модерните системи използват процеса
                 посоляване. Когато потребителят се регистрира в системата, тя създава
                 <mark class="orange">уникален за него низ от случайни символи</mark>.
-                Този низ, наречен <mark class="significant orange">сол,</mark> се
+                Този низ, наречен <em class="orange">сол,</em> се
                 добавя в края на въведената от потребителя парола. След това
                 удължената парола се хешира от системата и се запаметява в базата
                 данни. Така две еднакви пароли ще генерират напълно различен хеш.
@@ -617,14 +616,14 @@
                 задават паролата за своят акаунт да е
                 <mark class="significant blue">123456</mark>. Хешът на тази парола с
                 известния <em>SHA-256</em> алгоритъм е
-                <mark class="significant green">???</mark>. Системата обаче генерира
+                <mark class="significant green">b6cfefc9b41b1bd6940e8b023f391bd4ca684a28ab47f9fe86a70d40612e184e</mark>. Системата обаче генерира
                 уникални низове за двата акаунта и ги добавя в края на паролите. За
                 Ани низът е <mark class="significant orange">@n1x</mark>, а за Борко –
                 <mark class="significant orange">b0b1</mark>. След това системата
                 хешира двата низа <mark class="significant blue">123456@n1x</mark> и
                 <mark class="significant blue">123456b0b1</mark>, получава двете хеш
-                стойности <mark class="significant green">???</mark> и
-                <mark class="significant green">???</mark> и ги запаметява в базата
+                стойности <mark class="significant green">0914cd17fb5b89ce55b8b8794f537d446f2587f9b557a73cca01df9c1f4805d4</mark> и
+                <mark class="significant green">a8dd66908bf1c444510fd00a1b78a041f4823ffe4754b82b5e5fc991b28c2684</mark> и ги запаметява в базата
                 данни. Посоляващите стойностите също се запаметяват в базата данни без
                 да се криптират или хешират. Защо?
             </p>
@@ -639,6 +638,9 @@
                 обаче хакерите трябва да повторят същата операция, като използват
                 солта на Ани. В една система с милион потребители, този процес никога
                 не би бил ефективен.
+            </p>
+            <p>
+                Всъщност, процесът по посоляване на пароли, използва същата идея, която Ани и Борко приложиха, за да гарантират интегритета на изпратени по мрежата данни – добавянето на таен низ в края на данните преди пресмятането на хеш стойността.
             </p>
             <h3>Подлютяване</h3>
             <p>
@@ -672,55 +674,55 @@
             <h2>Източници:</h2>
             <ol id="references-ordered-list">
                 <li id="references_1">
-                    The SSL Store, "The difference between Encryption, Hashing and
-                    Salting", публикувана на 19.12.2018г., [<a
+                    The SSL Store, <em>The difference between Encryption, Hashing and
+                    Salting</em>, публикувана на 19.12.2018г., [<a
                         href="https://www.thesslstore.com/blog/difference-encryption-hashing-salting/"
                         target="_blank">https://www.thesslstore.com/blog/difference-encryption-hashing-salting/</a>]
                 </li>
                 <li id="references_2">
-                    Wikipedia, "Caesar cipher", актуализирана последно на 30.04.2024г.,
+                    Wikipedia, <em>Caesar cipher</em>, актуализирана последно на 30.04.2024г.,
                     [<a href="https://en.wikipedia.org/wiki/Caesar_cipher"
                         target="_blank">https://en.wikipedia.org/wiki/Caesar_cipher</a>]
                 </li>
                 <li id="references_3">
-                    CSFG, "Coding – Encryption, Substitution ciphers", посетена последно
+                    CSFG, <em>Coding - Encryption, Substitution ciphers</em>, посетена последно
                     на 14.05.2024г., [<a
                         href="https://www.csfieldguide.org.nz/en/chapters/coding-encryption/substitution-ciphers/"
                         target="_blank">https://www.csfieldguide.org.nz/en/chapters/coding-encryption/substitution-ciphers/</a>]
                 </li>
                 <li id="references_4">
-                    Simia, "How often is which letter?", публикувана на 04.11.2012г.,
+                    Simia, <em>How often is which letter?</em>, публикувана на 04.11.2012г.,
                     [<a href="http://simia.net/letters/" target="_blank">http://simia.net/letters/</a>]
                 </li>
                 <li id="references_5">
-                    Practical Networking, "Cryptography", посетена последно на
+                    Practical Networking, <em>Cryptography</em>, посетена последно на
                     14.05.2024г., [<a href="https://www.practicalnetworking.net/series/cryptography"
                         target="_blank">https://www.practicalnetworking.net/series/cryptography</a>]
                 </li>
                 <li id="references_6">
-                    Google Cloud, "What is Encryption?", посетена последно на
+                    Google Cloud, <em>What is Encryption?</em>, посетена последно на
                     14.05.2024г., [<a href="https://cloud.google.com/learn/what-is-encryption"
                         target="_blank">https://cloud.google.com/learn/what-is-encryption</a>]
                 </li>
                 <li id="references_7">
-                    Comparitech, "Encryption, hashing, salting – what’s the
-                    difference?", актуализирана последно на 24.01.2024г., [<a
+                    Comparitech, <em>Encryption, hashing, salting - what's the
+                    difference?</em>, актуализирана последно на 24.01.2024г., [<a
                         href="https://www.comparitech.com/blog/information-security/encryption-hashing-salting/"
                         target="_blank">https://www.comparitech.com/blog/information-security/encryption-hashing-salting/</a>
                 </li>
                 <li id="references_8">
-                    Cybernews, "Hashing vs encryption vs salting: what's the
-                    difference?"", актуализирана последно на 14.03.2022г., [<a
+                    Cybernews, <em>Hashing vs encryption vs salting: what's the
+                    difference?</em>, актуализирана последно на 14.03.2022г., [<a
                         href="https://cybernews.com/security/hashing-vs-encryption/"
                         target="_blank">https://cybernews.com/security/hashing-vs-encryption/</a>]
                 </li>
                 <li id="references_9">
-                    Wikipedia, "Trapdoor function", актуализирана последно на
+                    Wikipedia, <em>Trapdoor function</em>, актуализирана последно на
                     25.02.2024г., [<a href="https://en.wikipedia.org/wiki/Trapdoor_function"
                         target="_blank">https://en.wikipedia.org/wiki/Trapdoor_function</a>]
                 </li>
                 <li id="references_10">
-                    Wikipedia, "Pepper (cryptography)", актуализирана последно на
+                    Wikipedia, <em>Pepper (cryptography)</em>, актуализирана последно на
                     07.10.2023г., [<a href="https://en.m.wikipedia.org/wiki/Pepper_(cryptography)"
                         target="_blank">https://en.m.wikipedia.org/wiki/Pepper_(cryptography)</a>]
                 </li>

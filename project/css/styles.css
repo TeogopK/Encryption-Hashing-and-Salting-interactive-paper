@@ -48,6 +48,7 @@ mark {
 .significant {
   font-style: italic;
   padding: 0.1em;
+  letter-spacing: 0.05rem;
 }
 
 .blue,
@@ -73,10 +74,6 @@ h4 {
 label {
   display: block;
   margin-bottom: 5px;
-}
-
-textarea {
-  display: block;
 }
 
 select {
@@ -159,5 +156,11 @@ a:hover {
   .content,
   aside {
     width: 100%;
+  }
+
+  aside img {
+    max-width: 40%;
+    height: auto;
+    margin: 0.5em 0 0 0;
   }
 }
