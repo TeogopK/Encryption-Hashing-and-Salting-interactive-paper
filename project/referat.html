@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="css/styles.css" />
     <link rel="stylesheet" href="css/ceaser_shift.css" />
     <link rel="stylesheet" href="css/frequency_analyzer.css" />
-    <link rel="stylesheet" href="css/ceaser_key.css" />
 </head>
 
 <body>
@@ -109,15 +108,15 @@
             <h4>Цезаров шифър в действие</h4>
             <section class="ceaserShiftContainer">
                 <label for="alphabetSelect">Азбука на съобщението:</label>
-                <select id="alphabetSelect" onchange="updateShift(document.getElementById('shiftRange').value)">
+                <select id="alphabetSelect" onchange="updateShift()">
                     <option value="cyrillic">Кирилица</option>
                     <option value="latin">Латиница</option>
                 </select>
                 <label for="textInput">Съобщение за кодиране:</label>
-                <input type="text" id="textInput" placeholder="Въведете текст..."
-                    oninput="encodeText(document.getElementById('shiftRange').value)" />
-                    <section>Стойност на преместването: <span id="shiftValue">0</span></section>
-                    <input type="range" min="-29" max="29" value="0" id="shiftRange" oninput="updateShift(this.value)" />
+                <input type="text" id="textInput" class="inputBox" placeholder="Въведете текст, състоящ се от главни букви..."
+                    oninput="updateShift()"/>
+                    <section>Стойност на преместването: <mark id="shiftValue" class="orange">0</mark></section>
+                    <input type="range" id="shiftRange" oninput="updateShift()" />
                     
                 <section class="letters-container">
                     <section class="row" id="originalLettersContainer">
@@ -125,7 +124,9 @@
                     <section class="row" id="encodedLettersContainer">
                     </section>
                 </section>
-                <section class="encoded-text" id="encodedText"></section>
+                <label for="encodedText">Криптираното съобщение:</label>
+                <input type="text" id="encodedText" class="outputBox" placeholder="Криптираното съобщение ще се покаже тук..." readonly/>
+                
             </section>
 
             <script src="javascript/ceaser_shift.js"></script>
@@ -144,7 +145,7 @@
                 Съществуват различни вариации на шифъра на Цезар, които се опитват да
                 увеличат сложността на алгоритъма. Ако се използва индивидуално
                 подреждане, такова че всяка буква отговаря на произволна друга
-                възможните комбинации за ключ стават <em>26!</em>. Това е число с 26
+                възможните комбинации за ключ стават <em>30!</em>. Това е число с 32
                 нули, което би довело читателя до мисълта, че този шифър би бил
                 неразбиваем. Това ще е вярно, ако се използва наивен
                 <mark class="significant orange">brute force</mark> метод за

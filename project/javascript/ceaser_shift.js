@@ -1,64 +1,53 @@
 const LATIN_ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 const CYRILLIC_ALPHABET = 'АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЬЮЯ'
 
+const DEFAULT_VALUE_SHIFT = 3
+
 // Updates the visual cipher
-function updateShift(shift) {
+function updateShift() {
   const alphabetSelect = document.getElementById('alphabetSelect');
   const selectedAlphabet = alphabetSelect.value;
   let letters = '';
 
-  if (selectedAlphabet === 'latin') {
-    letters = LATIN_ALPHABET;
-  } else if (selectedAlphabet === 'cyrillic') {
-    letters = CYRILLIC_ALPHABET;
-  } else {
-    letters = LATIN_ALPHABET;
-  }
+  letters = (selectedAlphabet === 'latin') ? LATIN_ALPHABET : CYRILLIC_ALPHABET;
+
+  const shiftRange = document.getElementById('shiftRange');
+  shiftRange.max = letters.length - 1;
+  shiftRange.min = -(letters.length - 1);
+  shiftRange.value = shiftRange.value % letters.length
 
   const originalLettersContainer = document.getElementById('originalLettersContainer');
   const encodedLettersContainer = document.getElementById('encodedLettersContainer');
-  const shiftValue = document.getElementById('shiftValue');
-  const encodedTextContainer = document.getElementById('encodedText');
 
   originalLettersContainer.innerHTML = '';
   encodedLettersContainer.innerHTML = '';
-  shiftValue.textContent = shift;
+  shiftValue.textContent = shiftRange.value;
 
   for (let i = 0; i < letters.length; i++) {
-    const encodedIndex = (i + parseInt(shift) + letters.length) % letters.length;
+    const encodedIndex = (i + parseInt(shiftRange.value) + letters.length) % letters.length;
     const letter = letters[i];
     const encodedLetter = letters[encodedIndex];
 
-    const originalLetterDiv = document.createElement('div');
+    const originalLetterDiv = document.createElement('section');
     originalLetterDiv.classList.add('letter');
     originalLetterDiv.textContent = letter;
     originalLettersContainer.appendChild(originalLetterDiv);
 
-    const encodedLetterDiv = document.createElement('div');
+    const encodedLetterDiv = document.createElement('section');
     encodedLetterDiv.classList.add('letter');
     encodedLetterDiv.textContent = encodedLetter;
     encodedLettersContainer.appendChild(encodedLetterDiv);
   }
 
-  encodeText(shift);
+  encodeText(shiftRange.value, letters);
 }
 
 // Encodes the text
-function encodeText(shift) {
+function encodeText(shift, letters) {
   const textInput = document.getElementById('textInput');
-  const encodedText = [];
   const text = textInput.value.toUpperCase();
-  const alphabetSelect = document.getElementById('alphabetSelect');
-  const selectedAlphabet = alphabetSelect.value;
-  let letters = '';
 
-  if (selectedAlphabet === 'latin') {
-    letters = LATIN_ALPHABET;
-  } else if (selectedAlphabet === 'cyrillic') {
-    letters = CYRILLIC_ALPHABET;
-  } else {
-    letters = LATIN_ALPHABET;
-  }
+  const encodedText = [];
 
   for (let i = 0; i < text.length; i++) {
     if (text[i] >= letters[0] && text[i] <= letters[letters.length - 1]) {
@@ -69,8 +58,7 @@ function encodeText(shift) {
     }
   }
 
-  const encodedTextContainer = document.getElementById('encodedText');
-  encodedTextContainer.textContent = "Криптираното съобщение: " + encodedText.join('');
+  document.getElementById('encodedText').value = encodedText.join('');
 }
 
 // Function to set default values on page load
@@ -78,10 +66,10 @@ function setDefaultValues() {
   const shiftRange = document.getElementById('shiftRange');
   const textInput = document.getElementById('textInput');
 
-  shiftRange.value = 3;
+  shiftRange.value = DEFAULT_VALUE_SHIFT;
   textInput.value = '';
 
-  updateShift(shiftRange.value);
+  updateShift();
 }
 
 // Default page loader
