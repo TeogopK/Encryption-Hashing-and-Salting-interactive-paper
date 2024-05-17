@@ -87,14 +87,13 @@
 }
 
 .ceaserShiftContainer .letter {
-  width: 30px;
-  height: 30px;
+  width: 3em;
+  height: 2em;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #ccc;
-  margin: 1px 2;
-  font-size: 20px;
+  border: 0.01em solid #ccc;
+  font-size: 0.9em;
 }
 
 .ceaserShiftContainer input[type="range"] {
@@ -111,7 +110,18 @@
   text-transform: none;
 }
 
-@media only screen and (max-width: 900px) {
+.ceaserShiftContainer #originalLettersContainer {
+  color: #29306c;
+}
+
+.ceaserShiftContainer #encodedLettersContainer {
+  color: #f07725;
+}
+
+@media only screen and (max-width: 1200px) {
+  .ceaserShiftContainer .letter {
+    font-size: 0.7em;
+  }
 }
 
 /* Frequency analyzer specific */

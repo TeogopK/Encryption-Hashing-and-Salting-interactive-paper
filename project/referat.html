@@ -126,9 +126,12 @@
                     <input type="range" id="shiftRange" oninput="updateShift()" />
                 </section>
 
-                <section class="letters-container">
-                    <section class="row" id="originalLettersContainer"></section>
-                    <section class="row" id="encodedLettersContainer"> </section>
+                <section>
+                    <label for="originalLettersContainer">Шифър:</label>
+                    <section class="letters-container">
+                        <section class="row" id="originalLettersContainer"></section>
+                        <section class="row" id="encodedLettersContainer"> </section>
+                    </section>
                 </section>
 
                 <section>
@@ -192,7 +195,8 @@
                 <h4>Анализатор на честотата на символите</h4>
 
                 <section><label for="inputText">Съобщение:</label>
-                    <input type="text" id="inputText" class="inputBox" placeholder="Въведете текст за анализиране тук..."></input>
+                    <input type="text" id="inputText" class="inputBox"
+                        placeholder="Въведете текст за анализиране тук..."></input>
                 </section>
 
                 <section id="results">

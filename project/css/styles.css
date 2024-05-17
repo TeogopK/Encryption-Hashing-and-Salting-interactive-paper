@@ -25,6 +25,7 @@ p {
   margin: 1em auto;
   font-size: 1em;
   line-height: 1.5em;
+  word-wrap: break-word;
 }
 
 h1 {
@@ -80,7 +81,6 @@ a:hover {
 strong {
   font-weight: 600;
 }
-
 
 /* References */
 sup {
