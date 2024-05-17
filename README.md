@@ -1,1 +1,1 @@
-# Encryption-Hasing-and-Salting-interactive-paper
+# Encryption-Hashing-and-Salting-interactive-paper
