@@ -30,6 +30,7 @@ function clearTextboxes() {
   document.getElementById('messageInputKey').value = '';
   document.getElementById('keyInputKey').value = '';
   document.getElementById('resultKey').value = '';
+  document.getElementById('alphabetSelectKey').selectedIndex = 0;
 }
 
 window.addEventListener('load', clearTextboxes);

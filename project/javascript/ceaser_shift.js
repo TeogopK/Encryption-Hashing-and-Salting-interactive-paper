@@ -63,11 +63,9 @@ function encodeText(shift, letters) {
 
 // Function to set default values on page load
 function setDefaultValues() {
-  const shiftRange = document.getElementById('shiftRange');
-  const textInput = document.getElementById('textInput');
-
-  shiftRange.value = DEFAULT_VALUE_SHIFT;
-  textInput.value = '';
+  document.getElementById('shiftRange').value = DEFAULT_VALUE_SHIFT;
+  document.getElementById('textInput').value = '';
+  document.getElementById('alphabetSelect').selectedIndex = 0;
 
   updateShift();
 }

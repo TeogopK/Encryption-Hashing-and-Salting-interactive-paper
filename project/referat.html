@@ -6,8 +6,7 @@
     <title>Разлики при криптиране, хеширане и посоляване</title>
 
     <link rel="stylesheet" href="css/styles.css" />
-    <link rel="stylesheet" href="css/ceaser_shift.css" />
-    <link rel="stylesheet" href="css/frequency_analyzer.css" />
+    <link rel="stylesheet" href="css/playgrounds.css" />
 </head>
 
 <body>
@@ -22,7 +21,7 @@
                 програмисти знаят какви процеси стоят зад тези сложни термини.
             </p>
             <p>
-                <mark class="blue bold">Криптирането</mark> е основен процес при
+                <strong class="blue">Криптирането</strong> е основен процес при
                 сигурния <mark class="orange">трансфер на данни</mark>, използван в
                 комуникацията между повечето модерни устройства. Предаваната
                 информация се криптира така, че единствено желаният получател да може
@@ -33,7 +32,7 @@
                 от транзакцията.
             </p>
             <p>
-                При <mark class="blue bold">хеширането</mark> основният проблем, който
+                При <strong class="blue">хеширането</strong> основният проблем, който
                 се разрешава, е проверката за
                 <mark class="orange">интегритет на данни</mark>. Стойността получена
                 при хеширането на дадени данни е уникална, като всяка малка промяна в
@@ -52,7 +51,7 @@
                 уважаващ себе си хакер би успял да разбие тези лесни пароли за
                 отрицателно време. За да се предотврати този проблем, повечето модерни
                 приложения използват техниката посоляване.
-                <mark class="blue bold">Посоляването</mark> е процесът по прибавяне на
+                <strong class="blue">Посоляването</strong> е процесът по прибавяне на
                 допълнителна последователност от символи към потребителската парола
                 преди процеса на хеширане. Постига се
                 <mark class="orange">усложняване на потребителската парола</mark>.
@@ -105,31 +104,40 @@
                 <em>Gn(x) = (x – n) mod 30</em>.<sup><a href="#references_2">[2]</a></sup>
             </p>
 
-            <h4>Цезаров шифър в действие</h4>
-            <section class="ceaserShiftContainer">
-                <label for="alphabetSelect">Азбука на съобщението:</label>
-                <select id="alphabetSelect" onchange="updateShift()">
-                    <option value="cyrillic">Кирилица</option>
-                    <option value="latin">Латиница</option>
-                </select>
-                <label for="textInput">Съобщение за кодиране:</label>
-                <input type="text" id="textInput" class="inputBox" placeholder="Въведете текст, състоящ се от главни букви..."
-                    oninput="updateShift()"/>
+            <section class="ceaserShiftContainer playground">
+                <h4>Цезаров шифър в действие</h4>
+
+                <section>
+                    <label for="alphabetSelect">Азбука на съобщението:</label>
+                    <select id="alphabetSelect" onchange="updateShift()">
+                        <option value="cyrillic" selected>Кирилица</option>
+                        <option value="latin">Латиница</option>
+                    </select>
+                </section>
+
+                <section>
+                    <label for="textInput">Съобщение за кодиране:</label>
+                    <input type="text" id="textInput" class="inputBox"
+                        placeholder="Въведете текст, състоящ се от главни букви..." oninput="updateShift()" />
+                </section>
+
+                <section>
                     <section>Стойност на преместването: <mark id="shiftValue" class="orange">0</mark></section>
                     <input type="range" id="shiftRange" oninput="updateShift()" />
-                    
-                <section class="letters-container">
-                    <section class="row" id="originalLettersContainer">
-                    </section>
-                    <section class="row" id="encodedLettersContainer">
-                    </section>
                 </section>
-                <label for="encodedText">Криптираното съобщение:</label>
-                <input type="text" id="encodedText" class="outputBox" placeholder="Криптираното съобщение ще се покаже тук..." readonly/>
-                
-            </section>
 
-            <script src="javascript/ceaser_shift.js"></script>
+                <section class="letters-container">
+                    <section class="row" id="originalLettersContainer"></section>
+                    <section class="row" id="encodedLettersContainer"> </section>
+                </section>
+
+                <section>
+                    <label for="encodedText">Криптираното съобщение:</label>
+                    <input type="text" id="encodedText" class="outputBox" readonly />
+                </section>
+
+                <script src="javascript/ceaser_shift.js"></script>
+            </section>
 
             <h3>Разбиване на криптиращ алгоритъм</h3>
             <p>
@@ -179,20 +187,22 @@
                 <mark class="significant blue">АЗ СЪМ НАЧЕЛО НА ПЕТНАДЕСЕТ ХИЛЯДНА АРМИЯ И ПЪТУВАМ КЪМ ВАС</mark>
             </p>
 
-            <h4>Анализатор на честотата на символите</h4>
-            
-            <section class="frequencyAnalyzerContainer">
-                <label for="inputText">Съобщение:</label>
-                <input type="text" id="inputText" placeholder="Въведете текст тук..."></input>
+
+            <section class="frequencyAnalyzerContainer playground">
+                <h4>Анализатор на честотата на символите</h4>
+
+                <section><label for="inputText">Съобщение:</label>
+                    <input type="text" id="inputText" placeholder="Въведете текст тук..."></input>
+                </section>
 
                 <section id="results">
                     <table id="frequencyTable">
                         <thead>
-                        <tr>
-                            <th>Символ</th>
-                            <th>Честота</th>
-                        </tr>
-                    </thead>
+                            <tr>
+                                <th>Символ</th>
+                                <th>Честота</th>
+                            </tr>
+                        </thead>
                         <tbody></tbody>
                     </table>
                 </section>
@@ -246,21 +256,32 @@
                 изследване във всеки един отделен шифър.<sup><a href="#references_3">[3]</a></sup>
             </p>
 
-            <h4>Криптиране с ключ</h4>
-            <section class="ceaserKeyContainer">
+            <section class="ceaserKeyContainer playground">
+                <h4>Криптиране с ключ</h4>
 
-            <label for="alphabetSelectKey">Азбука на съобщението:</label>
-            <select id="alphabetSelectKey">
-                <option value="cyrillic">Кирилица</option>
-                <option value="latin">Латиница</option>
-            </select>
-            <label for="messageInputKey">Съобщение:</label>
-                <input type="text" class="inputBox" id="messageInputKey" placeholder="Въведете съобщение за криптиране..."  oninput="encryptKey()"></input>
-                <label for="messageInputKey">Ключ с букви:</label>
-                <input type="text" class="keyBox" id="keyInputKey" placeholder="Въведете ключ, показващ отместването в азбуката..." oninput="encryptKey()"/>
-                <label for="resultKey">Криптирано съобщение:</label>
+                <section>
+                    <label for="alphabetSelectKey">Азбука на съобщението:</label>
+                    <select id="alphabetSelectKey" onchange="encryptKey()">
+                        <option value="cyrillic" selected>Кирилица</option>
+                        <option value="latin">Латиница</option>
+                    </select>
+                </section>
 
-                <input type="text" class="outputBox" id="resultKey" placeholder="Криптираното съобщение ще се покаже тук...", readonly></input>
+                <section>
+                    <label for="messageInputKey">Съобщение:</label>
+                    <input type="text" class="inputBox" id="messageInputKey"
+                        placeholder="Въведете съобщение за криптиране..." oninput="encryptKey()"></input>
+                </section>
+
+                <section> <label for="messageInputKey">Ключ с букви:</label>
+                    <input type="text" class="keyBox" id="keyInputKey"
+                        placeholder="Въведете ключ, показващ отместването в азбуката..." oninput="encryptKey()" />
+                </section>
+
+                <section>
+                    <label for="resultKey">Криптирано съобщение:</label>
+                    <input type="text" class="outputBox" id="resultKey" , readonly></input>
+                </section>
 
                 <script src="javascript/ceaser_key.js"></script>
             </section>
@@ -347,38 +368,46 @@
                 <mark class="significant green">îíìì</mark>
             </p>
 
-            <h4>Криптиране с битов ключ</h4>
-            <section class="bitKeyContainer">
-                <label for="bitKey_inputText">Съобщение на английски:</label>
-                <input type="text" id="bitKey_inputText" rows="4" cols="50" placeholder="Въведете текст тук..."
-                    oninput="updateSteps()"></input>
-                <label for="bitKey_encryptionKey">Битов ключ (низ от единици и нули):</label>
+            <section class="bitKeyContainer playground">
+                <h4>Криптиране с битов ключ</h4>
 
-                <input type="text" id="bitKey_encryptionKey" placeholder="Въведете ключ за криптиране..."
-                    oninput="updateSteps()" />
+                <section>
+                    <label for="bitKeyInputText">Съобщение на английски:</label>
+                    <input type="text" id="bitKeyInputText" rows="4" cols="50"
+                        placeholder="Въведете съобщение на английски език..." oninput="updateSteps()"></input>
+                </section>
 
-                <p>Процес на Криптиране:</p>
-                <p>
-                    1. Оригинален Текст:
-                    <span id="originalText"></span>
-                </p>
-                <p>2. Текст към ASCII: <span id="textToASCII"></span></p>
-                <p>
-                    3. ASCII към Двоичен запис:
-                    <span id="ASCIIToBinary"></span>
-                </p>
-                <p>
-                    4. Криптиран Двоичен запис:
-                    <span id="encryptedBinary"></span>
-                </p>
-                <p>
-                    5. Криптиран ASCII:
-                    <span id="encryptedASCII"></span>
-                </p>
-                <p>
-                    6. Криптиран Текст:
-                    <span id="encryptedText"></span>
-                </p>
+                <section>
+                    <label for="textToASCII">Текст към ASCII:</label>
+                    <input type="text" class="outputBox" id="textToASCII" readonly>
+                </section>
+
+                <section>
+                    <label for="ASCIIToBinary">ASCII към Двоичен запис:</label>
+                    <input type="text" class="outputBox" id="ASCIIToBinary" readonly>
+                </section>
+
+                <section>
+                    <label for="bitKeyKey">Битов ключ (низ от единици и нули):</label>
+                    <input type="text" id="bitKeyKey" placeholder="Въведете ключ за криптиране..."
+                        oninput="updateSteps()" />
+                </section>
+
+                <section>
+                    <label for="encryptedBinary">Криптиран Двоичен запис:</label>
+                    <input type="text" class="outputBox" id="encryptedBinary" readonly>
+                </section>
+
+                <section>
+                    <label for="encryptedASCII">Криптиран ASCII:</label>
+                    <input type="text" class="outputBox" id="encryptedASCII" readonly>
+                </section>
+
+                <section>
+                    <label for="encryptedText">Криптиран Текст:</label>
+                    <input type="text" class="outputBox" id="encryptedText" readonly>
+                </section>
+
 
                 <script src="javascript/bit_key.js"></script>
             </section>
@@ -504,10 +533,12 @@
                 хеширане на даден низ, винаги ще получаваме стойност с дължина 256
                 бита. При хеширане на низа
                 <mark class="significant blue">Аз съм Цезар</mark> получаваме
-                <mark class="significant green">839d8fd51d6fceb3216d35ac8316999264f5d1d1ceb701eb7c488560112df79a</mark>. След промяна на дори една
+                <mark class="significant green">839d8fd51d6fceb3216d35ac8316999264f5d1d1ceb701eb7c488560112df79a</mark>.
+                След промяна на дори една
                 буква – <mark class="significant blue">Аз съм Сезар</mark>, получаваме
                 напълно различна хеш стойност –
-                <mark class="significant green">fc5494b9214f40f96eeb099d14c576962afba000f85c2af6d31a398c3c708121</mark>. Така Ани е сигурна, че
+                <mark class="significant green">fc5494b9214f40f96eeb099d14c576962afba000f85c2af6d31a398c3c708121</mark>.
+                Така Ани е сигурна, че
                 съобщението е в пълния си вид, когато пристига до нея, и нищо във
                 файла не е било променяно по пътя. Но дали Ани трябва да е толкова
                 сигурна?
@@ -527,29 +558,31 @@
                 разберат поверително за тайната дума? Разбира се, ще използват
                 асиметрично криптиране.<sup><a href="#references_5">[5]</a></sup>
             </p>
-            <h4>Хеширане с таен низ</h4>
-            <section class="integrityHashContainer">
-            <section>
-            <label for="integrityMessage">Съобщение:</label>
-            <input type="text" id="integrityMessage" name="integrityMessage" placeholder="Въведете съобщение..."></input>
-            </section>
-            
-            <section>
-            <label for="integrityMessageHash">Хeш на съобщението:</label>
-            <input type="text" id="integrityMessageHash" readonly>
-            </section>
-            
-            <section>
-            <label for="integritySecret">Таен низ:</label>
-            <input type="text" id="integritySecret" name="integritySecret"  placeholder="Въведете таен низ...">
-            </section>
-            
-            <section>
-                <label for="integrityConcatenatedHash">Изпратен хеш на съобщението с тайния низ:</label>
-                <input type="text" id="integrityConcatenatedHash" readonly>
-            </section>
+            <section class="integrityHashContainer playground">
+                <h4>Хеширане с таен низ</h4>
+                <section>
+                    <label for="integrityMessage">Съобщение:</label>
+                    <input type="text" class="inputBox" id="integrityMessage" name="integrityMessage"
+                        placeholder="Въведете съобщение..." oninput="calculateHashIntegrity()"></input>
+                </section>
 
-            <script src="javascript/integrity_hash.js"></script>
+                <section>
+                    <label for="integrityMessageHash">Хeш на съобщението:</label>
+                    <input type="text" class="outputBox" id="integrityMessageHash" readonly>
+                </section>
+
+                <section>
+                    <label for="integritySecret">Таен низ:</label>
+                    <input type="text" class="keyBox" id="integritySecret" name="integritySecret"
+                        placeholder="Въведете таен низ..." oninput="calculateHashIntegrity()">
+                </section>
+
+                <section>
+                    <label for="integrityConcatenatedHash">Изпратен хеш на съобщението с тайния низ:</label>
+                    <input type="text" class="outputBox" id="integrityConcatenatedHash" readonly>
+                </section>
+
+                <script src="javascript/integrity_hash.js"></script>
             </section>
             <h3>Съхранение на пароли</h3>
             <p>
@@ -616,14 +649,17 @@
                 задават паролата за своят акаунт да е
                 <mark class="significant blue">123456</mark>. Хешът на тази парола с
                 известния <em>SHA-256</em> алгоритъм е
-                <mark class="significant green">b6cfefc9b41b1bd6940e8b023f391bd4ca684a28ab47f9fe86a70d40612e184e</mark>. Системата обаче генерира
+                <mark class="significant green">b6cfefc9b41b1bd6940e8b023f391bd4ca684a28ab47f9fe86a70d40612e184e</mark>.
+                Системата обаче генерира
                 уникални низове за двата акаунта и ги добавя в края на паролите. За
                 Ани низът е <mark class="significant orange">@n1x</mark>, а за Борко –
                 <mark class="significant orange">b0b1</mark>. След това системата
                 хешира двата низа <mark class="significant blue">123456@n1x</mark> и
                 <mark class="significant blue">123456b0b1</mark>, получава двете хеш
-                стойности <mark class="significant green">0914cd17fb5b89ce55b8b8794f537d446f2587f9b557a73cca01df9c1f4805d4</mark> и
-                <mark class="significant green">a8dd66908bf1c444510fd00a1b78a041f4823ffe4754b82b5e5fc991b28c2684</mark> и ги запаметява в базата
+                стойности <mark
+                    class="significant green">0914cd17fb5b89ce55b8b8794f537d446f2587f9b557a73cca01df9c1f4805d4</mark> и
+                <mark class="significant green">a8dd66908bf1c444510fd00a1b78a041f4823ffe4754b82b5e5fc991b28c2684</mark>
+                и ги запаметява в базата
                 данни. Посоляващите стойностите също се запаметяват в базата данни без
                 да се криптират или хешират. Защо?
             </p>
@@ -640,7 +676,9 @@
                 не би бил ефективен.
             </p>
             <p>
-                Всъщност, процесът по посоляване на пароли, използва същата идея, която Ани и Борко приложиха, за да гарантират интегритета на изпратени по мрежата данни – добавянето на таен низ в края на данните преди пресмятането на хеш стойността.
+                Всъщност, процесът по посоляване на пароли, използва същата идея, която Ани и Борко приложиха, за да
+                гарантират интегритета на изпратени по мрежата данни – добавянето на таен низ в края на данните преди
+                пресмятането на хеш стойността.
             </p>
             <h3>Подлютяване</h3>
             <p>
@@ -672,61 +710,63 @@
             </p>
 
             <h2>Източници:</h2>
-            <ol id="references-ordered-list">
-                <li id="references_1">
-                    The SSL Store, <em>The difference between Encryption, Hashing and
-                    Salting</em>, публикувана на 19.12.2018г., [<a
-                        href="https://www.thesslstore.com/blog/difference-encryption-hashing-salting/"
-                        target="_blank">https://www.thesslstore.com/blog/difference-encryption-hashing-salting/</a>]
-                </li>
-                <li id="references_2">
-                    Wikipedia, <em>Caesar cipher</em>, актуализирана последно на 30.04.2024г.,
-                    [<a href="https://en.wikipedia.org/wiki/Caesar_cipher"
-                        target="_blank">https://en.wikipedia.org/wiki/Caesar_cipher</a>]
-                </li>
-                <li id="references_3">
-                    CSFG, <em>Coding - Encryption, Substitution ciphers</em>, посетена последно
-                    на 14.05.2024г., [<a
-                        href="https://www.csfieldguide.org.nz/en/chapters/coding-encryption/substitution-ciphers/"
-                        target="_blank">https://www.csfieldguide.org.nz/en/chapters/coding-encryption/substitution-ciphers/</a>]
-                </li>
-                <li id="references_4">
-                    Simia, <em>How often is which letter?</em>, публикувана на 04.11.2012г.,
-                    [<a href="http://simia.net/letters/" target="_blank">http://simia.net/letters/</a>]
-                </li>
-                <li id="references_5">
-                    Practical Networking, <em>Cryptography</em>, посетена последно на
-                    14.05.2024г., [<a href="https://www.practicalnetworking.net/series/cryptography"
-                        target="_blank">https://www.practicalnetworking.net/series/cryptography</a>]
-                </li>
-                <li id="references_6">
-                    Google Cloud, <em>What is Encryption?</em>, посетена последно на
-                    14.05.2024г., [<a href="https://cloud.google.com/learn/what-is-encryption"
-                        target="_blank">https://cloud.google.com/learn/what-is-encryption</a>]
-                </li>
-                <li id="references_7">
-                    Comparitech, <em>Encryption, hashing, salting - what's the
-                    difference?</em>, актуализирана последно на 24.01.2024г., [<a
-                        href="https://www.comparitech.com/blog/information-security/encryption-hashing-salting/"
-                        target="_blank">https://www.comparitech.com/blog/information-security/encryption-hashing-salting/</a>
-                </li>
-                <li id="references_8">
-                    Cybernews, <em>Hashing vs encryption vs salting: what's the
-                    difference?</em>, актуализирана последно на 14.03.2022г., [<a
-                        href="https://cybernews.com/security/hashing-vs-encryption/"
-                        target="_blank">https://cybernews.com/security/hashing-vs-encryption/</a>]
-                </li>
-                <li id="references_9">
-                    Wikipedia, <em>Trapdoor function</em>, актуализирана последно на
-                    25.02.2024г., [<a href="https://en.wikipedia.org/wiki/Trapdoor_function"
-                        target="_blank">https://en.wikipedia.org/wiki/Trapdoor_function</a>]
-                </li>
-                <li id="references_10">
-                    Wikipedia, <em>Pepper (cryptography)</em>, актуализирана последно на
-                    07.10.2023г., [<a href="https://en.m.wikipedia.org/wiki/Pepper_(cryptography)"
-                        target="_blank">https://en.m.wikipedia.org/wiki/Pepper_(cryptography)</a>]
-                </li>
-            </ol>
+            <section>
+                <ol id="references-ordered-list">
+                    <li id="references_1">
+                        The SSL Store, <em>The difference between Encryption, Hashing and
+                            Salting</em>, публикувана на 19.12.2018г., [<a
+                            href="https://www.thesslstore.com/blog/difference-encryption-hashing-salting/"
+                            target="_blank">https://www.thesslstore.com/blog/difference-encryption-hashing-salting/</a>]
+                    </li>
+                    <li id="references_2">
+                        Wikipedia, <em>Caesar cipher</em>, актуализирана последно на 30.04.2024г.,
+                        [<a href="https://en.wikipedia.org/wiki/Caesar_cipher"
+                            target="_blank">https://en.wikipedia.org/wiki/Caesar_cipher</a>]
+                    </li>
+                    <li id="references_3">
+                        CSFG, <em>Coding - Encryption, Substitution ciphers</em>, посетена последно
+                        на 14.05.2024г., [<a
+                            href="https://www.csfieldguide.org.nz/en/chapters/coding-encryption/substitution-ciphers/"
+                            target="_blank">https://www.csfieldguide.org.nz/en/chapters/coding-encryption/substitution-ciphers/</a>]
+                    </li>
+                    <li id="references_4">
+                        Simia, <em>How often is which letter?</em>, публикувана на 04.11.2012г.,
+                        [<a href="http://simia.net/letters/" target="_blank">http://simia.net/letters/</a>]
+                    </li>
+                    <li id="references_5">
+                        Practical Networking, <em>Cryptography</em>, посетена последно на
+                        14.05.2024г., [<a href="https://www.practicalnetworking.net/series/cryptography"
+                            target="_blank">https://www.practicalnetworking.net/series/cryptography</a>]
+                    </li>
+                    <li id="references_6">
+                        Google Cloud, <em>What is Encryption?</em>, посетена последно на
+                        14.05.2024г., [<a href="https://cloud.google.com/learn/what-is-encryption"
+                            target="_blank">https://cloud.google.com/learn/what-is-encryption</a>]
+                    </li>
+                    <li id="references_7">
+                        Comparitech, <em>Encryption, hashing, salting - what's the
+                            difference?</em>, актуализирана последно на 24.01.2024г., [<a
+                            href="https://www.comparitech.com/blog/information-security/encryption-hashing-salting/"
+                            target="_blank">https://www.comparitech.com/blog/information-security/encryption-hashing-salting/</a>
+                    </li>
+                    <li id="references_8">
+                        Cybernews, <em>Hashing vs encryption vs salting: what's the
+                            difference?</em>, актуализирана последно на 14.03.2022г., [<a
+                            href="https://cybernews.com/security/hashing-vs-encryption/"
+                            target="_blank">https://cybernews.com/security/hashing-vs-encryption/</a>]
+                    </li>
+                    <li id="references_9">
+                        Wikipedia, <em>Trapdoor function</em>, актуализирана последно на
+                        25.02.2024г., [<a href="https://en.wikipedia.org/wiki/Trapdoor_function"
+                            target="_blank">https://en.wikipedia.org/wiki/Trapdoor_function</a>]
+                    </li>
+                    <li id="references_10">
+                        Wikipedia, <em>Pepper (cryptography)</em>, актуализирана последно на
+                        07.10.2023г., [<a href="https://en.m.wikipedia.org/wiki/Pepper_(cryptography)"
+                            target="_blank">https://en.m.wikipedia.org/wiki/Pepper_(cryptography)</a>]
+                    </li>
+                </ol>
+            </section>
 
             <blockquote>
                 "ТС-ЗСДУИ ЦЙГФИР НУГМ, СХНСОНСХС ЦЙГФ ДИК НУГМ." ~ЩИКГУ
@@ -735,9 +775,9 @@
         <aside>
             <h3>Автор</h3>
             <img src="https://media.licdn.com/dms/image/D4D03AQEYS_DS2JhrDg/profile-displayphoto-shrink_800_800/0/1711764139912?e=1721260800&v=beta&t=LYYkQkD6mT5ApAWYxDLMALghXVNH7jA1-rrfudtVRI0"
-                alt="Снимка на Теодор Костадинов" />
+                alt="Снимка на автора, Теодор Костадинов." />
             <ul>
-                <li id="author-name">Теодор Костадинов</li>
+                <li><strong id="author-name">Теодор Костадинов</strong></li>
 
                 <li>Студент във Факултета по математика и информатика, СУ</li>
                 <li>

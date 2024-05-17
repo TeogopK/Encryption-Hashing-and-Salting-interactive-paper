@@ -67,18 +67,20 @@ h4 {
   color: #53a446;
 }
 
-.bold {
+a:link,
+a:visited {
+  color: #29306c;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+strong {
   font-weight: 600;
 }
 
-label {
-  display: block;
-  margin-bottom: 5px;
-}
-
-select {
-  margin-bottom: 1em;
-}
 
 /* References */
 sup {
@@ -131,19 +133,8 @@ aside li {
 
 #author-name {
   margin-top: 0.5em;
-  font-weight: bold;
   font-size: 1.1em;
   color: #29306c;
-}
-
-a:link,
-a:visited {
-  color: #29306c;
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
 }
 
 /* Small screens adjusting*/

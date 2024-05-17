@@ -1,0 +1,135 @@
+.playground {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.playground input[type="text"] {
+  width: 80%;
+  height: 1.1em;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: none;
+  margin-bottom: 1em;
+  font-style: italic;
+  letter-spacing: 0.05rem;
+}
+
+.playground input[type="text"]::placeholder {
+  color: black;
+  letter-spacing: 1px;
+}
+
+
+.playground label {
+  display: block;
+  margin-bottom: 0.3em;
+}
+
+.playground select {
+  margin-bottom: 1em;
+}
+
+.playground section {
+  width: 100%;
+}
+
+.inputBox {
+  color: #29306c;
+}
+
+.keyBox {
+  color: #f07725;
+}
+
+.outputBox {
+  color: #53a446;
+  background-color: #f4f3f3;
+}
+
+.inputBox:hover {
+  outline: 1px solid #29306c;
+}
+
+.inputBox:focus,
+.inputBox:active {
+  outline: 3px solid #29306c;
+}
+
+.keyBox:hover {
+  outline: 1px solid #f07725;
+}
+
+.keyBox:focus,
+.keyBox:active {
+  outline: 3px solid #f07725;
+}
+
+.outputBox,
+.outputBox:hover,
+.outputBox:focus,
+.outputBox:active {
+  outline: none;
+}
+
+/* Ceaser shift specific */
+.ceaserShiftContainer .letters-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.ceaserShiftContainer .row {
+  display: flex;
+}
+
+.ceaserShiftContainer .letter {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ccc;
+  margin: 1px 2;
+  font-size: 20px;
+}
+
+.ceaserShiftContainer input[type="range"] {
+  width: 80%;
+  margin-bottom: 20px;
+  accent-color: #f07725;
+}
+
+.ceaserShiftContainer #textInput {
+  text-transform: uppercase;
+}
+
+.ceaserShiftContainer #textInput::placeholder {
+  text-transform: none;
+}
+
+@media only screen and (max-width: 900px) {
+}
+
+/* Frequency analyzer specific */
+.frequencyAnalyzerContainer table {
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 600px;
+}
+
+.frequencyAnalyzerContainer th,
+td {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 6px;
+}
+
+.frequencyAnalyzerContainer thead th {
+  color: #29306c;
+  border: 2px dotted #f07725;
+}

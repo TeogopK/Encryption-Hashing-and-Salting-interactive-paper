@@ -1,23 +1,20 @@
-document.getElementById('bitKey_inputText').addEventListener('input', updateSteps);
-document.getElementById('bitKey_encryptionKey').addEventListener('input', updateSteps);
-
 function updateSteps() {
-    var text = document.getElementById("bitKey_inputText").value;
-    var key = document.getElementById("bitKey_encryptionKey").value;
+    var text = document.getElementById("bitKeyInputText").value;
+    var key = document.getElementById("bitKeyKey").value;
 
     if (text === "") {
         clearOutputs();
         return;
     }
 
-    var asciiArray = text.split('').map(function(char) {
+    var asciiArray = text.split('').map(function (char) {
         return char.charCodeAt(0);
     });
-    var binaryArray = asciiArray.map(function(decimal) {
+    var binaryArray = asciiArray.map(function (decimal) {
         return decimal.toString(2).padStart(8, '0');
     });
+
     var binaryString = binaryArray.join('');
-    document.getElementById("originalText").innerText = text;
     document.getElementById("textToASCII").innerText = asciiArray.join(', ');
     document.getElementById("ASCIIToBinary").innerText = binaryString;
 
@@ -43,20 +40,15 @@ function updateSteps() {
     document.getElementById("encryptedText").innerText = encryptedText;
 }
 
-function clearOutputs() {
-    document.getElementById("originalText").innerText = "";
+function clearBitKeyTextBoxes() {
+    document.getElementById("bitKeyInputText").value = "";
     document.getElementById("textToASCII").innerText = "";
     document.getElementById("ASCIIToBinary").innerText = "";
-    document.getElementById("bitKey_inputText").value = ""; // Clear the input text
-    document.getElementById("bitKey_encryptionKey").value = ""; // Clear the encryption key
-}
 
-function clearEncryptedOutputs() {
+    document.getElementById("bitKeyKey").value = "";
     document.getElementById("encryptedBinary").innerText = "";
     document.getElementById("encryptedASCII").innerText = "";
     document.getElementById("encryptedText").innerText = "";
 }
 
-window.onload = function() {
-    clearOutputs();
-};
+window.addEventListener('load', clearBitKeyTextBoxes);

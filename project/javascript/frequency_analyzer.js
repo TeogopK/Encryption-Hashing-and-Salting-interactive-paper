@@ -10,12 +10,12 @@ function analyzeText() {
     for (var i = 0; i < text.length; i++) {
         var symbol = text[i];
         if (symbol !== ' ') {
-        if (symbolFrequency[symbol]) {
-            symbolFrequency[symbol]++;
-        } else {
-            symbolFrequency[symbol] = 1;
+            if (symbolFrequency[symbol]) {
+                symbolFrequency[symbol]++;
+            } else {
+                symbolFrequency[symbol] = 1;
+            }
         }
-    }
     }
 
     // Sort symbols by frequency
@@ -38,3 +38,9 @@ function analyzeText() {
         cell2.textContent = symbolFrequency[symbol];
     });
 }
+
+function clearAnalyzerTextBoxes() {
+    document.getElementById("inputText").value = "";
+}
+
+window.addEventListener('load', clearAnalyzerTextBoxes);
