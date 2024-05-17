@@ -23,7 +23,6 @@
   letter-spacing: 1px;
 }
 
-
 .playground label {
   display: block;
   margin-bottom: 0.3em;
@@ -132,4 +131,10 @@ td {
 .frequencyAnalyzerContainer thead th {
   color: #29306c;
   border: 2px dotted #f07725;
+}
+
+/* Bit key specific */
+.bitKeyContainer #textToASCII,
+.bitKeyContainer #ASCIIToBinary {
+  color: #29306c;
 }
