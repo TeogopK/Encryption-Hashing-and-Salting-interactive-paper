@@ -12,7 +12,7 @@ function updateSteps() {
     var binaryString = binaryArray.join('');
     document.getElementById("textToASCII").value = asciiArray.join(', ');
     document.getElementById("ASCIIToBinary").value = binaryString;
-    
+
     if (key === "") {
         return;
     }
